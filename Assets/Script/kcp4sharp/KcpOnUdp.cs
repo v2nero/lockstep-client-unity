@@ -59,7 +59,7 @@ namespace cocosocket4unity
               {
                   this.client.Connect(serverAddr);
               }
-              client.BeginReceive(Received, client);
+              client.BeginReceive(new AsyncCallback(Received), client);
           }
           catch (Exception ex)
           {
@@ -89,7 +89,7 @@ namespace cocosocket4unity
             this.needUpdate = true;
 			this.lastTime = DateTime.Now;
           }
-            client.BeginReceive(Received, ar.AsyncState);
+            client.BeginReceive(new AsyncCallback(Received), ar.AsyncState);
            }catch(Exception ex)
            {
                this.HandleException(ex);
